@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -95,7 +96,7 @@
         progress.innerHTML = '<div class="progress"></div>';
         details.appendChild(progress);
         details.style.display = 'block';
-        
+
         var width = 0;
         var interval = setInterval(function() {
             if (width >= 100) {
@@ -118,9 +119,9 @@
     function loadAdditionalInfo(details) {
         var info = document.createElement('div');
         info.classList.add('additional-info');
-        info.innerHTML = '<p>Anecdotes incroyables et conseils aux ingénieurs de BTP.</p>';
+        info.innerHTML = 'Information additionnelle sur l\'entreprise.';
         details.appendChild(info);
-        
+
         setTimeout(function() {
             info.style.display = 'block';
         }, 2000);
@@ -154,7 +155,8 @@
 
 <div class="container">
     <div class="search-section">
-        <input type="text" id="search" placeholder="Rechercher une entreprise..." onkeyup="filterCompanies()">
+        <input type="text" id="search" placeholder="Rechercher une
+entreprise..." onkeyup="filterCompanies()">
     </div>
 
     <ul class="company-list" id="companyList">
@@ -163,9 +165,9 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise SEKAD -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Numéro: 23 48 6 061</p>
                     <p>Email: contact@sekad.ci</p>
-                    <p>Localisation: Abidjan, Côte d'Ivoire</p>
+                    <p>Localisation: Yopougon Andokoi château</p>
                 </div>
             </div>
         </li>
@@ -174,9 +176,9 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise Génie Civil et Topographie -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Numéro: 07 48 51 3127</p>
                     <p>Email: contact@gct.ci</p>
-                    <p>Localisation: Yamoussoukro, Côte d'Ivoire</p>
+                    <p>Localisation: Yopougon ananerais</p>
                 </div>
             </div>
         </li>
@@ -185,9 +187,9 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise Nehabou btp -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@nehabou.ci</p>
-                    <p>Localisation: Bouaké, Côte d'Ivoire</p>
+                    <p>Numéro: 57624053</p>
+                    <p>Email: Infonebahoubtp@gmail.com</p>
+                    <p>Localisation: Yopougon port boet2</p>
                 </div>
             </div>
         </li>
@@ -196,9 +198,9 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise Hoshi BTP -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Numéro: 07 58 46 0539</p>
                     <p>Email: contact@hoshi.ci</p>
-                    <p>Localisation: Daloa, Côte d'Ivoire</p>
+                    <p>Localisation: Yopougon Eglise sainte rita</p>
                 </div>
             </div>
         </li>
@@ -207,9 +209,9 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise LGI BATIMENTS TRAVAUX PUBLICS -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Numéro: 07 07 29 9299</p>
                     <p>Email: contact@lgibtp.ci</p>
-                    <p>Localisation: San Pedro, Côte d'Ivoire</p>
+                    <p>Localisation: Yop non loin zone industrielle</p>
                 </div>
             </div>
         </li>
@@ -218,9 +220,9 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise BET-ARCHI -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@bet-archi.ci</p>
-                    <p>Localisation: Korhogo, Côte d'Ivoire</p>
+                    <p>Numéro: 07 89 06 63 54</p>
+                    <p>Email: betarchi.ci.sarl@gmail.com</p>
+                    <p>Localisation: Yopougon cosmos</p>
                 </div>
             </div>
         </li>
@@ -229,9 +231,9 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise Groupe Codici SARL -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Numéro: 07 07 29 0934</p>
                     <p>Email: contact@groupcodici.ci</p>
-                    <p>Localisation: Man, Côte d'Ivoire</p>
+                    <p>Localisation: Yopougon gesco</p>
                 </div>
             </div>
         </li>
@@ -240,42 +242,65 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise ITMSBTP -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Numéro: 07 58 10 7743</p>
                     <p>Email: contact@itmsbtp.ci</p>
-                    <p>Localisation: Odienné, Côte d'Ivoire</p>
+                    <p>Localisation: Yopougon Annaneraie</p>
                 </div>
             </div>
         </li>
         <li class="company-item">
-            <h3 onclick="loadDetails(this)">Fofana BTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise Fofana BTP -->
-                <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@fofanabtp.ci</p>
-                    <p>Localisation: Abengourou, Côte d'Ivoire</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">EMERTEC BGC</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise EMERTEC BGC -->
-                <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@emertecbgc.ci</p>
-                    <p>Localisation: Gagnoa, Côte d'Ivoire</p>
-                </div>
-            </div>
-        </li>
+            <li class="company-item">
+    <h3 onclick="loadDetails(this)">ITMSBTP</h3>
+    <div class="company-details">
+        <!-- Détails de l'entreprise ITMSBTP -->
+        <div class="company-info">
+            <p>Numéro: 07 58 10 7743</p>
+            <p>Email: contact@itmsbtp.ci</p>
+            <p>Localisation: Yopougon Annaneraie</p>
+        </div>
+    </div>
+</li>
+<li class="company-item">
+    <h3 onclick="loadDetails(this)">Société Générale de Batiment (SGB)</h3>
+    <div class="company-details">
+        <!-- Détails de l'entreprise Société Générale de Batiment (SGB) -->
+        <div class="company-info">
+            <p>Numéro: 07 08 09 1011</p>
+            <p>Email: contact@sgb.ci</p>
+            <p>Localisation: Yopougon Koweit</p>
+        </div>
+    </div>
+</li>
+<li class="company-item">
+    <h3 onclick="loadDetails(this)">BTP Engineering</h3>
+    <div class="company-details">
+        <!-- Détails de l'entreprise BTP Engineering -->
+        <div class="company-info">
+            <p>Numéro: 07 58 09 1516</p>
+            <p>Email: contact@btpengineering.ci</p>
+            <p>Localisation: Yopougon Maroc</p>
+        </div>
+    </div>
+</li>
+<li class="company-item">
+    <h3 onclick="loadDetails(this)">Société Africaine de Construction (SAC)</h3>
+    <div class="company-details">
+        <!-- Détails de l'entreprise Société Africaine de Construction (SAC) -->
+        <div class="company-info">
+            <p>Numéro: 07 56 13 1718</p>
+            <p>Email: contact@sac.ci</p>
+            <p>Localisation: Yopougon Ficgayo</p>
+        </div>
+    </div>
+     <ul class="company-list" id="companyList">
         <li class="company-item">
             <h3 onclick="loadDetails(this)">BEZOK BTP sarl</h3>
             <div class="company-details">
                 <!-- Détails de l'entreprise BEZOK BTP sarl -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@bezokbtp.ci</p>
-                    <p>Localisation: Sassandra, Côte d'Ivoire</p>
+                    <p>Numéro: 07 89 18 5555</p>
+                    <p>Email: contact@groupebezok.com</p>
+                    <p>Localisation: Cocody rue L2</p>
                 </div>
             </div>
         </li>
@@ -284,20 +309,8 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise JPK BTP.ci -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@jpkbtp.ci</p>
-                    <p>Localisation: Divo, Côte d'Ivoire</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">KANGA ENTREPRISE GENERAL</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise KANGA ENTREPRISE GENERAL -->
-                <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@kangaeg.ci</p>
-                    <p>Localisation: Bondoukou, Côte d'Ivoire</p>
+                    <p>Numéro: 05 02 08 0278</p>
+                    <p>Localisation: Plateau</p>
                 </div>
             </div>
         </li>
@@ -306,9 +319,8 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise Archange BTP -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@archangebtp.ci</p>
-                    <p>Localisation: Toumodi, Côte d'Ivoire</p>
+                    <p>Numéro: +22577774696</p>
+                    <p>Localisation: Yop port boët</p>
                 </div>
             </div>
         </li>
@@ -317,20 +329,8 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise SYG-BTP -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@sygbtp.ci</p>
-                    <p>Localisation: Aboisso, Côte d'Ivoire</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">ECBTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise ECBTP -->
-                <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@ecbtp.ci</p>
-                    <p>Localisation: Séguéla, Côte d'Ivoire</p>
+                    <p>Numéro: 07 59 45 0458</p>
+                    <p>Localisation: Riviera 2</p>
                 </div>
             </div>
         </li>
@@ -339,9 +339,8 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise GK CONSTRUCTION & INGENIERIE -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@gkci.ci</p>
-                    <p>Localisation: Daoukro, Côte d'Ivoire</p>
+                    <p>Numéro: 25 22 0 09454</p>
+                    <p>Localisation: Cocody Angré</p>
                 </div>
             </div>
         </li>
@@ -350,42 +349,9 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise Expert touch btp -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@expertbtp.ci</p>
-                    <p>Localisation: Anyama, Côte d'Ivoire</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">NGBI (Nouvelle Génération des Bâtisseurs Ivoiriens)</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise NGBI (Nouvelle Génération des Bâtisseurs Ivoiriens) -->
-                <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@ngbi.ci</p>
-                    <p>Localisation: Bingerville, Côte d'Ivoire</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">EIC BTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise EIC BTP -->
-                <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@eicbtp.ci</p>
-                    <p>Localisation: Yopougon, Côte d'Ivoire</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">GICOBAT PLUS</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise GICOBAT PLUS -->
-                <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@gicobatplus.ci</p>
-                    <p>Localisation: Grand-Bassam, Côte d'Ivoire</p>
+                    <p>Numéro: 05 95 63 2605</p>
+                    <p>Email: experttouchbtp23@gmail.com</p>
+                    <p>Localisation: Cocody Attoban-bonoumin</p>
                 </div>
             </div>
         </li>
@@ -394,9 +360,8 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise VICBTP -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@vicbtp.ci</p>
-                    <p>Localisation: Dabou, Côte d'Ivoire</p>
+                    <p>Numéro: 07 95 62 10</p>
+                    <p>Localisation: Cocody</p>
                 </div>
             </div>
         </li>
@@ -405,9 +370,8 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise SONITRA CI -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@sonitraci.ci</p>
-                    <p>Localisation: Bouaflé, Côte d'Ivoire</p>
+                    <p>Numéro: 27 20 3 05858</p>
+                    <p>Localisation: Adjame williamsville</p>
                 </div>
             </div>
         </li>
@@ -416,20 +380,19 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise GCI-BTP -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@gcibtp.ci</p>
-                    <p>Localisation: Soubré, Côte d'Ivoire</p>
+                    <p>Numéro: 01 02 32 9995</p>
+                    <p>Localisation: Angré 7ème tranche</p>
                 </div>
             </div>
         </li>
         <li class="company-item">
-            <h3 onclick="loadDetails(this)">BUREAU D'ETUDE ET D'INGENIERIE BTP (ERDM-BTP)</h3>
+            <h3 onclick="loadDetails(this)">BUREAU D'ETUDE ET
+D'INGENIERIE BTP (ERDM-BTP)</h3>
             <div class="company-details">
-                <!-- Détails de l'entreprise BUREAU D'ETUDE ET D'INGENIERIE BTP (ERDM-BTP) -->
+                <!-- Détails de l'entreprise ERDM-BTP -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@erdmbtp.ci</p>
-                    <p>Localisation: Adzopé, Côte d'Ivoire</p>
+                    <p>Numéro: 07 87 50 1573</p>
+                    <p>Localisation: Cocody Angré</p>
                 </div>
             </div>
         </li>
@@ -438,9 +401,8 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise EIS-BTP sarl -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@eisbtp.ci</p>
-                    <p>Localisation: Lakota, Côte d'Ivoire</p>
+                    <p>Numéro: 05 04 22 2328</p>
+                    <p>Localisation: Angré</p>
                 </div>
             </div>
         </li>
@@ -449,9 +411,8 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise SPIMCOBTP -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@spimcobtp.ci</p>
-                    <p>Localisation: Touba, Côte d'Ivoire</p>
+                    <p>Numéro: 27 21 3 89943</p>
+                    <p>Localisation: Plateau Dokui</p>
                 </div>
             </div>
         </li>
@@ -460,94 +421,13 @@
             <div class="company-details">
                 <!-- Détails de l'entreprise CNTP -->
                 <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@cntp.ci</p>
-                    <p>Localisation: Korhogo, Côte d'Ivoire</p>
+                    <p>Numéro: 22504816</p>
+                    <p>Localisation: Angré</p>
                 </div>
             </div>
         </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">GEBATEC</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise GEBATEC -->
-                <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@gebatec.ci</p>
-                    <p>Localisation: Man, Côte d'Ivoire</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">BONON BTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise BONON BTP -->
-                <div class="company-info">
-                    <p>Numéro: +225 01 23 45 67 89</p>
-                    <p>Email: contact@bononbtp.ci</p>
-                    <p>Localisation: Abengourou, Côte d'Ivoire</p>
-                </div>
-            </div>
-        </li>
-    </ul>
+</li>
+</ul>
 </div>
-
-<script>
-    function loadDetails(element) {
-        var details = element.nextElementSibling;
-        var progress = document.createElement('div');
-        progress.classList.add('progress-bar');
-        progress.innerHTML = '<div class="progress"></div>';
-        details.appendChild(progress);
-        details.style.display = 'block';
-        
-        var width = 0;
-        var interval = setInterval(function() {
-            if (width >= 100) {
-                clearInterval(interval);
-                var infoButton = document.createElement('button');
-                infoButton.classList.add('additional-info-button');
-                infoButton.innerHTML = 'Voir plus';
-                infoButton.onclick = function() {
-                    loadAdditionalInfo(details);
-                };
-                details.appendChild(infoButton);
-                details.querySelector('.progress-bar').style.display = 'none';
-            } else {
-                width++;
-                details.querySelector('.progress').style.width = width + '%';
-            }
-        }, 20);
-    }
-
-    function loadAdditionalInfo(details) {
-        var info = document.createElement('div');
-        info.classList.add('additional-info');
-        info.innerHTML = 'Information additionnelle sur l\'entreprise.';
-        details.appendChild(info);
-        
-        setTimeout(function() {
-            info.style.display = 'block';
-        }, 2000);
-    }
-
-    function filterCompanies() {
-        var input, filter, ul, li, h3, i, txtValue;
-        input = document.getElementById('search');
-        filter = input.value.toUpperCase();
-        ul = document.getElementById('companyList');
-        li = ul.getElementsByTagName('li');
-
-        for (i = 0; i < li.length; i++) {
-            h3 = li[i].getElementsByTagName('h3')[0];
-            txtValue = h3.textContent || h3.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-    }
-</script>
-
 </body>
 </html>
